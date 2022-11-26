@@ -1,5 +1,5 @@
 {
-  "name": "mini-servoce-core",
+  "name": "mini-umi",
   "version": "0.0.1",
   "description": "a mini system service core",
   "main": "dist/cjs/index.js",
