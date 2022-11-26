@@ -1,0 +1,22 @@
+{
+  "name": "mini-umi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "mini-umi": "./bin/mini-umi.js"
+  },
+  "scripts": {
+    "dev": "father dev",
+    "build": "father build",
+    "build:deps": "father prebundle",
+    "prepublishOnly": "father doctor && npm run build"
+  },
+  "dependencies": {
+    "@mini-umi/core": "workspace: ../core",
+    "@umijs/utils": "^4.0.332"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

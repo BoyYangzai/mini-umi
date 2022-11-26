@@ -4,6 +4,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "baseUrl": "./",
-    "moduleDetection": "auto"
+    "moduleDetection": "auto",
+    "esModuleInterop": true,
   }
 }
