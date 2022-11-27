@@ -1,10 +1,18 @@
 ## 实现 Service Core 架构的最简模型
+😚已完成：
+✅ 实现内置 presets plugin 功能
+✅  实现 mini-umi 的 command 系统
+✅ 实现编译时 Hook
+✅ feat: 读取用户 Loacl Plugin
 🤔TODO：
-- [x] 实现 mini-umi 的 command 系统
-- [x] 实现编译时Hook
-- [ ] 实现生成运行时
-- [ ] 完善插件API
+- [ ] 实现生成运行时 with Preset
+- [ ] 实现 userConfig 以及 modify 全流程
+- [ ] 完善插件API  - Todo: registerMethod
 ...
 
 🤔More:
 - [ ] 实现一套 preset-react
+- [ ] 实现一套 preset-vue
+- [ ] 实现 father
+- [ ] 实现 dumi
+

@@ -1,4 +1,5 @@
-
+import esbuild from '@umijs/bundler-utils/compiled/esbuild';
+import { register } from '@umijs/utils'
 // plugin是为了获得PluginAPi 然后在指定的生命周期添加对应的功能
 
 export class Plugin{
@@ -23,8 +24,23 @@ export class Plugin{
   }
 
   apply() {
-    const ret = require(this.path)
-    return ret.default
+    register.register({
+      implementor: esbuild,
+      exts: ['.ts', '.mjs'],
+    });
+    register.clearFiles();
+    let ret;
+    try {
+      ret = require(this.path);
+    } catch (e: any) {
+      throw new Error(
+        `Register ${this.type} ${this.path} failed, since ${e.message}`,
+      );
+    } finally {
+      register.restore();
+    }
+    // use the default member for es modules
+    return ret.__esModule ? ret.default : ret;
   }
 
 }

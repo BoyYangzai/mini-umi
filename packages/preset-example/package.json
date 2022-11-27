@@ -1,21 +1,13 @@
 {
-  "name": "mini-umi",
+  "name": "@mini-umi/preset-example",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "bin": {
-    "mini-umi": "./bin/mini-umi.js"
-  },
+  "main": "dist/index.js",
   "scripts": {
     "dev": "father dev",
     "build": "father build",
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build"
-  },
-  "dependencies": {
-    "@mini-umi/preset-example": "workspace:*",
-    "@mini-umi/core": "workspace:*",
-    "@umijs/utils": "^4.0.3"
   },
   "keywords": [],
   "author": "",

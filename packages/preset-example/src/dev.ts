@@ -1,25 +1,25 @@
 // 插件 
-export default (iApi) => {
-  iApi.registerCommand({
+export default (IApi) => {
+  IApi.registerCommand({
     name: 'dev',
     fn: () => {
       console.log('devServer run!');
     }
   })
-  iApi.registerCommand({
+  IApi.registerCommand({
     name: 'name',
     fn: ({ n }) => {
       console.log(`Hello,${n}`);
     }
   })
 
-  iApi.registerCommand({
+  IApi.registerCommand({
     name: 't',
     fn: () => {
       console.log('t run!');
     }
   })
-  iApi.register({
+  IApi.register({
     key: 'onBuildStart',
     fn: (name) => {
       console.log('onBuildStart plugin-A');

@@ -14,8 +14,8 @@ export class PluginAPi{
     (this.service.hooks[opts.key] || (this.service.hooks[opts.key]=[])).push(new Hook({ ...opts ,plugin: this.plugin}))
   }
 
-  registerCommand(opts) {
-    const {name} = opts
+  registerCommand(opts:{name:string,fn:Function}) {
+    const { name } = opts
     this.service.commands[name] = new Command({...opts,plugin:this.plugin})
   }
   

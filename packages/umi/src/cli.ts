@@ -1,6 +1,17 @@
 import { Core } from "@mini-umi/core";
 import yParse from '@umijs/utils/compiled/yargs-parser'
-const core = new Core({})
+import { existsSync } from 'fs'
+import { join } from 'path'
+
+const cwd = process.cwd()
+
+const core = new Core({
+  presets: [require.resolve('@mini-umi/preset-example')],
+  plugins: [
+    existsSync(join(cwd, 'plugin.ts')) && join(cwd, 'plugin.ts'),
+    existsSync(join(cwd, 'plugin.js')) && join(cwd, 'plugin.js'),
+  ].filter(Boolean),
+})
 
 const args = yParse(process.argv.slice(2))
 
