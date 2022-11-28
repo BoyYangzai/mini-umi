@@ -1,11 +1,14 @@
 import { Command } from "./command";
 import { Hook } from "./hook";
 import { type Core } from './core'
+import { Config } from "./config/config";
 
 
 export class PluginAPi{
   service;
   plugin;
+  onStart: Function =()=>{};
+  modifyConfig: (memo: Config) => Config|undefined = (memo: Config)=> undefined;
   constructor(opts: { service; plugin}) {
     this.service = opts.service;
     this.plugin = opts.plugin

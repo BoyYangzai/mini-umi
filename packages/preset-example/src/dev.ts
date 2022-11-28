@@ -1,5 +1,7 @@
+import { IApi } from "@mini-umi/core";
+
 // 插件 
-export default (IApi) => {
+export default (IApi: IApi) => {
   IApi.registerCommand({
     name: 'dev',
     fn: () => {
@@ -23,7 +25,6 @@ export default (IApi) => {
     key: 'onBuildStart',
     fn: (name) => {
       console.log('onBuildStart plugin-A');
-      return name+'A'
     }
   })
 }

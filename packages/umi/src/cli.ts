@@ -6,6 +6,8 @@ import { join } from 'path'
 const cwd = process.cwd()
 
 const core = new Core({
+  cwd: process.cwd(),
+  env: 'development',
   presets: [require.resolve('@mini-umi/preset-example')],
   plugins: [
     existsSync(join(cwd, 'plugin.ts')) && join(cwd, 'plugin.ts'),

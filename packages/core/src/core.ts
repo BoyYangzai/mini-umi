@@ -6,6 +6,7 @@ import {
   AsyncSeriesWaterfallHook,
   SyncWaterfallHook,
 } from '@umijs/bundler-utils/compiled/tapable';
+import { Config, Env } from "./config/config";
 
 
 enum ApplyPluginsType {
@@ -31,25 +32,34 @@ type hooks = {
 
 export class Core {
   private opts;
-  commands: Cmmands = {}
-  plugins: string[] = []
-  hooksByPluginId: hooksByPluginId = {}
-  hooks: hooks = {}
-  pluginMethods: Record<string, { plugin: Plugin, fn: Function }>={}
-  constructor(opts: { presets?: string[], plugins?: string[]}) {
+  cwd: string;
+  env: Env;
+  commands: Cmmands = {};
+  plugins: string[] = [];
+  hooksByPluginId: hooksByPluginId = {};
+  hooks: hooks = {};
+  pluginMethods: Record<string, { plugin: Plugin, fn: Function }> = {};
+  configManager: Config | null = null;
+  userConfig: object = {};
+  config: object = {};
+  constructor(opts: { cwd: string, env: Env, presets?: string[], plugins?: string[], defaultConfigFiles?: string[]}) {
     this.opts = opts
-    // TODO: hook
+    this.cwd = opts.cwd
+    this.env = opts.env;
     this.hooksByPluginId = {}
     this.hooks = {}
   }
 
   async run(opts: { name: string; args?: any}) {
     const { name, args = {} } = opts;
-    // TODO: 收集插件自带的 defalutConfig
-    for (const id of Object.keys(this.plugins)) {
-      const { config, key } = this.plugins[id] 
-      
-    }
+    // 获取用户配置
+    const configManager = new Config({
+      cwd: this.cwd,
+      env: this.env,
+      defaultConfigFiles: this.opts.defaultConfigFiles,
+    });
+    this.configManager = configManager;
+    this.userConfig = configManager.getUserConfig().config;
 
     // init Presets
     let { presets, plugins } = this.opts
@@ -73,18 +83,11 @@ export class Core {
         plugins: this.plugins
       });
     }
- 
-    // TODO: initPlugin
+    // init 所有插件
     this.plugins.forEach(async plugin => {
       await this.initPlugin({plugin:new Plugin({path: plugin})})
     })
-    // this.initPlugin({ plugin: new Plugin({ path: require.resolve('../../example-plugins/dist/dev.js') }) })
-    // this.initPlugin({ plugin: new Plugin({ path: require.resolve('../../example-plugins/dist/build.js') }) })
-
-    await this.applyPlugins({
-      key: 'modifyConfig',
-    });
-    
+  
     await this.applyPlugins({
       key: 'onCheck',
     });
@@ -92,6 +95,13 @@ export class Core {
     await this.applyPlugins({
       key: 'onStart',
     });
+    // 获取最终的配置
+    this.config = await this.applyPlugins({
+      key: 'modifyConfig',
+      initialValue: { ...this.userConfig },
+      args: { },
+    });
+    console.log(`最终的配置为${JSON.stringify(this.config)}`);
 
     await this.applyPlugins({
       key: 'onBuildStart',
@@ -127,6 +137,7 @@ export class Core {
         'args',
         'cwd',
         'userConfig',
+        'config'
       ],
       staticProps: {
         ApplyPluginsType,
@@ -158,8 +169,8 @@ export class Core {
         name: 'tmp'
       },
         async (memo: any) => {
-          const items = await hook.fn(opts.args);
-          return memo && memo.concat(items);
+          const items = await hook.fn(memo, opts.args);
+          return items && {...memo,...items};
         },
       )
     }
