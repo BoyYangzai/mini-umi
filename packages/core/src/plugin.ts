@@ -6,7 +6,7 @@ export class Plugin{
   private cwd;
   type;
   path;
-  constructor(opts) {
+  constructor(opts: any) {
     this.type = opts.type;
     this.path = opts.path;
     this.cwd = opts.cwd;
@@ -41,6 +41,11 @@ export class Plugin{
     }
     // use the default member for es modules
     return ret.__esModule ? ret.default : ret;
+  }
+  merge(opts: any) {
+    if (opts.key) this.key = opts.key;
+    if (opts.config) this.config = opts.config;
+    if (opts.enableBy) this.enableBy = opts.enableBy;
   }
 
 }

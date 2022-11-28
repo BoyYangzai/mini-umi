@@ -14,9 +14,12 @@
     "prepublishOnly": "father doctor && npm run build"
   },
   "dependencies": {
-    "@mini-umi/preset-example": "workspace:*",
     "@mini-umi/core": "workspace:*",
-    "@umijs/utils": "^4.0.3"
+    "@mini-umi/preset-example": "workspace:*",
+    "@umijs/preset-umi": "^4.0.33",
+    "@umijs/utils": "^4.0.3",
+    "react": "^17.0.0",
+    "umi": "^4.0.33"
   },
   "files": [
     "dist"
