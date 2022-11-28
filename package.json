@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "father dev",
-    "build": "father build",
+    "build": "pnpm run -r build",
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build"
   },
