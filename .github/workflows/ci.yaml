@@ -7,7 +7,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  ci:
     runs-on: macos-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     strategy:
@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies 
         run: pnpm install
 
-      - name: Install dependencies 
+      - name: Monorepo Build Production
         run: pnpm run build    
 
       - name: Workflow failed alert
