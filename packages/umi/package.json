@@ -1,6 +1,6 @@
 {
   "name": "mini-umi",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "father dev",
     "build": "father build",
+    "publish:all": "pnpm publish --no-git-checks",
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build"
   },
@@ -20,6 +21,7 @@
   "files": [
     "dist"
   ],
+  "repository": "https://github.com/BoyYangzai/mini-umi",
   "keywords": [
     "umi",
     "umijs",

@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "father dev",
     "build": "pnpm run -r build",
+    "publish:all": "pnpm run -r publish:all",
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build"
   },

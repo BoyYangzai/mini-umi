@@ -1,11 +1,12 @@
 {
   "name": "@mini-umi/core",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "dev": "father dev",
     "build": "father build",
+    "publish:all": "pnpm publish --no-git-checks",
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build"
   },
@@ -16,6 +17,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": "https://github.com/BoyYangzai/mini-umi",
   "files": [
     "dist"
   ],
