@@ -1,6 +1,6 @@
 {
   "name": "@mini-umi/preset-example",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -9,7 +9,20 @@
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "dependencies": {
+    "@mini-umi/core":"workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "umi",
+    "umijs",
+    "mini-umi"
+  ],
+  "author": "洋",
   "license": "ISC"
 }
