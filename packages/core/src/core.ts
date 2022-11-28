@@ -32,10 +32,11 @@ type hooks = {
 export class Core {
   private opts;
   commands: Cmmands = {}
-  plugins: Plugin[] = []
+  plugins: string[] = []
   hooksByPluginId: hooksByPluginId = {}
   hooks: hooks = {}
-  constructor(opts: { presets?: Plugin[], plugins?: Plugin[]}) {
+  pluginMethods: Record<string, { plugin: Plugin, fn: Function }>={}
+  constructor(opts: { presets?: string[], plugins?: string[]}) {
     this.opts = opts
     // TODO: hook
     this.hooksByPluginId = {}
@@ -51,7 +52,11 @@ export class Core {
     }
 
     // init Presets
-    const { presets, plugins } = this.opts
+    let { presets, plugins } = this.opts
+    presets = [require.resolve('./servicePlugin')].concat(
+      presets || [],
+    )
+
     if (presets) {
       while (presets.length) {
         await this.initPreset({
@@ -70,20 +75,26 @@ export class Core {
     }
  
     // TODO: initPlugin
-    this.plugins.forEach(plugin => {
-      this.initPlugin({plugin:new Plugin({path: plugin})})
+    this.plugins.forEach(async plugin => {
+      await this.initPlugin({plugin:new Plugin({path: plugin})})
     })
     // this.initPlugin({ plugin: new Plugin({ path: require.resolve('../../example-plugins/dist/dev.js') }) })
     // this.initPlugin({ plugin: new Plugin({ path: require.resolve('../../example-plugins/dist/build.js') }) })
 
     await this.applyPlugins({
-      key: 'onBuildStart',
-      initialValue:'daodao'
-    })
+      key: 'modifyConfig',
+    });
+    
+    await this.applyPlugins({
+      key: 'onCheck',
+    });
 
     await this.applyPlugins({
       key: 'onStart',
-      initialValue: 'daodao'
+    });
+
+    await this.applyPlugins({
+      key: 'onBuildStart',
     })
 
     const command = this.commands[name]
@@ -92,8 +103,8 @@ export class Core {
   
   async initPreset(opts: {
     preset: Plugin;
-    presets: Plugin[];
-    plugins: Plugin[];
+    presets: string[];
+    plugins: string[];
   }) {
     const { presets=[], plugins=[] } = await this.initPlugin({
       plugin: opts.preset,
@@ -105,9 +116,24 @@ export class Core {
     opts.plugins.push(...(plugins || []));
   }
 
-  async initPlugin(opts: { plugin: Plugin, presets?: Plugin[], plugins?: Plugin[] }) {
+  async initPlugin(opts: { plugin: Plugin, presets?: string[], plugins?: string[] }) {
     const pluginApi = new PluginAPi({ service: this, plugin: opts.plugin })
-    return opts.plugin.apply()(pluginApi) || {}
+    const proxyPluginAPI = PluginAPi.proxyPluginAPI({
+      service: this,
+      pluginAPI: pluginApi,
+      serviceProps: [
+        'appData',
+        'applyPlugins',
+        'args',
+        'cwd',
+        'userConfig',
+      ],
+      staticProps: {
+        ApplyPluginsType,
+        service: this,
+      },
+    });
+    return opts.plugin.apply()(proxyPluginAPI) || {}
   }
 
   // 用于执行特定 key 的 hook 相当于发布订阅的 emit
@@ -120,8 +146,10 @@ export class Core {
       sync?: boolean;
     }
   ) {
-    
     const hooks = this.hooks[opts.key]
+    if (!hooks) {
+      return {}
+    }
     // 读取修改用户配置
     const waterFullHook = new AsyncSeriesWaterfallHook(['memo'])
     
@@ -131,7 +159,7 @@ export class Core {
       },
         async (memo: any) => {
           const items = await hook.fn(opts.args);
-          return memo.concat(items);
+          return memo && memo.concat(items);
         },
       )
     }

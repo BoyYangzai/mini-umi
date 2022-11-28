@@ -13,4 +13,7 @@ export default (IApi) => {
       console.log('building!!');
     }
   })
+  IApi.onStart(() => {
+    console.log('onStart 生命周期链式调用中----');
+  })
 }
