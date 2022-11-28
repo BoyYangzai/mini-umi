@@ -5,6 +5,7 @@ npx mini-umi build
 ```
 ## 实现 Service Core 架构的最简模型
 😚已完成：
+
 ✅ 实现内置 presets plugin 功能
 
 ✅  实现 mini-umi 的 command 系统
