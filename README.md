@@ -1,7 +1,8 @@
-## 体验一下
+## 体验 mini-umi + Vue3.2 + Vite预设
 ```
-npx mini-umi dev 
-npx mini-umi build
+npx create-mumi 项目名
+npm install
+npm run dev
 ```
 ## 实现 Service Core 架构的最简模型
 😚已完成：
