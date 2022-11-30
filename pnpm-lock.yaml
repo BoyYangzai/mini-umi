@@ -30,25 +30,9 @@ importers:
 
   packages/create-m-umi:
     specifiers:
-      '@mini-umi/core': workspace:*
-      '@rollup/plugin-node-resolve': ^15.0.1
       '@umijs/utils': ^4.0.33
-      '@vitejs/plugin-vue': ^3.2.0
-      esbuild: ^0.15.16
-      fs-extra: ^11.1.0
-      rollup-plugin-css-only: ^4.3.0
-      rollup-plugin-vue: ^6.0.0
-      vite: ^3.2.4
     dependencies:
-      '@mini-umi/core': link:../core
-      '@rollup/plugin-node-resolve': 15.0.1
       '@umijs/utils': 4.0.33
-      '@vitejs/plugin-vue': 3.2.0_vite@3.2.4
-      esbuild: 0.15.16
-      fs-extra: 11.1.0
-      rollup-plugin-css-only: 4.3.0
-      rollup-plugin-vue: 6.0.0
-      vite: 3.2.4
 
   packages/preset-example:
     specifiers:
@@ -66,7 +50,6 @@ importers:
       fs-extra: ^11.1.0
       rollup-plugin-css-only: ^4.3.0
       rollup-plugin-vue: ^6.0.0
-      typescript: 5.0.0-dev.20221130
       vite: ^3.2.4
     dependencies:
       '@mini-umi/core': link:../core
@@ -78,8 +61,6 @@ importers:
       rollup-plugin-css-only: 4.3.0
       rollup-plugin-vue: 6.0.0
       vite: 3.2.4
-    devDependencies:
-      typescript: 5.0.0-dev.20221130
 
   packages/umi:
     specifiers:
@@ -4216,12 +4197,6 @@ packages:
 
   /typescript/4.7.4:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
-  /typescript/5.0.0-dev.20221130:
-    resolution: {integrity: sha512-exBY4QPpf0oLOfRYPHqlDivq8r1hfn3kREaytBEN0eA+Lwc3ycvvDkY92zqWlpvORmi2HDrkPIj2R/mw6eQzcg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
