@@ -27,6 +27,7 @@ npm run dev
 
 🤔TODO：
 - [ ] 支持对于 dev 约定式路由 的热更新
+- [ ] 支持以 LocalPlugin的 形式 ModifyBundleConfig
 ...
 
 🤔More:
