@@ -12,11 +12,13 @@ importers:
     specifiers:
       es-module-lexer: ^1.1.0
       esbuild: ^0.15.16
+      mini-umi: 'workspace: *'
       vue: ^3.2.45
       vue-router: ^4.1.6
     dependencies:
       es-module-lexer: 1.1.0
       esbuild: 0.15.16
+      mini-umi: link:../../packages/umi
       vue: 3.2.45
       vue-router: 4.1.6_vue@3.2.45
 
