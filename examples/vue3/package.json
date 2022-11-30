@@ -1,0 +1,20 @@
+{
+  "name": "vue3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "mumi dev",
+    "build": "mumi build",
+    "preview": "mumi preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "es-module-lexer": "^1.1.0",
+    "esbuild": "^0.15.16",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6"
+  }
+}

@@ -1,8 +1,12 @@
 {
-  "name": "@mini-umi/preset-example",
+  "name": "create-mumi",
   "version": "1.2.0",
   "description": "",
+  "module": "nodenext",
   "main": "dist/index.js",
+  "bin": {
+    "create": "./bin/create-mumi.js"
+  },
   "scripts": {
     "dev": "father dev",
     "build": "father build",
@@ -11,13 +15,11 @@
     "prepublishOnly": "father doctor && npm run build"
   },
   "dependencies": {
-    "@mini-umi/core":"workspace:*"
-  },
-  "publishConfig": {
-    "access": "public"
+    "@umijs/utils": "^4.0.33"
   },
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "repository": "https://github.com/BoyYangzai/mini-umi",
   "keywords": [

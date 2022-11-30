@@ -1,8 +1,12 @@
 {
-  "name": "@mini-umi/preset-example",
+  "name": "@mini-umi/preset-umi",
   "version": "1.2.0",
   "description": "",
+  "module": "nodenext",
   "main": "dist/index.js",
+  "bin": {
+    "mini-umi": "./bin/mini-umi.js"
+  },
   "scripts": {
     "dev": "father dev",
     "build": "father build",
@@ -11,13 +15,20 @@
     "prepublishOnly": "father doctor && npm run build"
   },
   "dependencies": {
-    "@mini-umi/core":"workspace:*"
-  },
-  "publishConfig": {
-    "access": "public"
+    "@mini-umi/core": "workspace:*",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@umijs/utils": "^4.0.3",
+    "@vitejs/plugin-vue": "^3.2.0",
+    "esbuild": "^0.15.16",
+    "fs-extra": "^11.1.0",
+    "rollup-plugin-css-only": "^4.3.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "vite": "^3.2.4"
   },
   "files": [
-    "dist"
+    "dist",
+    "template",
+    "src/vite.config.ts"
   ],
   "repository": "https://github.com/BoyYangzai/mini-umi",
   "keywords": [

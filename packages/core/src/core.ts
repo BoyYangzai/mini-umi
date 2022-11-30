@@ -42,7 +42,7 @@ export class Core {
   configManager: Config | null = null;
   userConfig: object = {};
   config: object = {};
-  constructor(opts: { cwd: string, env: Env, presets?: string[], plugins?: string[], defaultConfigFiles?: string[]}) {
+  constructor(opts: { cwd: string, env: Env, presets?: string[], plugins?: string[], defaultConfigFiles?: string[] }) {
     this.opts = opts
     this.cwd = opts.cwd
     this.env = opts.env;
@@ -50,7 +50,7 @@ export class Core {
     this.hooks = {}
   }
 
-  async run(opts: { name: string; args?: any}) {
+  async run(opts: { name: string; args?: any }) {
     const { name, args = {} } = opts;
     // 获取用户配置
     const configManager = new Config({
@@ -85,9 +85,9 @@ export class Core {
     }
     // init 所有插件
     this.plugins.forEach(async plugin => {
-      await this.initPlugin({plugin:new Plugin({path: plugin})})
+      await this.initPlugin({ plugin: new Plugin({ path: plugin }) })
     })
-  
+
     await this.applyPlugins({
       key: 'onCheck',
     });
@@ -99,7 +99,7 @@ export class Core {
     this.config = await this.applyPlugins({
       key: 'modifyConfig',
       initialValue: { ...this.userConfig },
-      args: { },
+      args: {},
     });
     console.log(`最终的配置为${JSON.stringify(this.config)}`);
 
@@ -110,18 +110,18 @@ export class Core {
     const command = this.commands[name]
     await command.fn({ ...args })
   }
-  
+
   async initPreset(opts: {
     preset: Plugin;
     presets: string[];
     plugins: string[];
   }) {
-    const { presets=[], plugins=[] } = await this.initPlugin({
+    const { presets = [], plugins = [] } = await this.initPlugin({
       plugin: opts.preset,
       presets: opts.presets,
       plugins: opts.plugins,
     });
-    
+
     opts.presets.unshift(...(presets || []));
     opts.plugins.push(...(plugins || []));
   }
@@ -159,22 +159,22 @@ export class Core {
   ) {
     const hooks = this.hooks[opts.key]
     if (!hooks) {
-      return {}
+      return opts.initialValue
     }
     // 读取修改用户配置
     const waterFullHook = new AsyncSeriesWaterfallHook(['memo'])
-    
+
     for (const hook of hooks) {
       waterFullHook.tapPromise({
         name: 'tmp'
       },
         async (memo: any) => {
           const items = await hook.fn(memo, opts.args);
-          return items && {...memo,...items};
+          return Array.isArray(memo) ? [...memo, ...items] : { ...memo, ...items };
         },
       )
     }
     return waterFullHook.promise(opts.initialValue)
   }
-  
+
 }

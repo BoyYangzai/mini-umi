@@ -16,15 +16,21 @@ npx mini-umi build
 
 ✅ 完善插件API
 
+✅ 实现 create-mumi 脚手架
+
 ✅ 实现 userConfig 以及 modify 全流程
 
+✅ 实现 Preset-Vue3.2 + Vite + dev build preview
+
+✅ 实现约定式路由 Vite 支持 Vue3.2 Hmr
+
 🤔TODO：
-- [ ] 实现生成运行时 with Preset dev and build
+- [ ] 支持对于 dev 约定式路由 的热更新
 ...
 
 🤔More:
 - [ ] 实现一套 preset-react
-- [ ] 实现一套 preset-vue
+- [ ] 实现一套 preset-qiankun
 - [ ] 实现 father
 - [ ] 实现 dumi
 

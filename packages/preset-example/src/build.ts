@@ -9,7 +9,7 @@ export default (IApi:IApi) => {
     }
   })
   IApi.registerCommand({
-    name: 'build',
+    name: 'example-build',
     fn: () => {
       console.log('building!!');
     }

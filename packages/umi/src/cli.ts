@@ -8,7 +8,7 @@ const cwd = process.cwd()
 const core = new Core({
   cwd: process.cwd(),
   env: 'development',
-  presets: [require.resolve('@mini-umi/preset-example')],
+  presets: [require.resolve('@mini-umi/preset-example'), require.resolve('@mini-umi/preset-umi')],
   plugins: [
     existsSync(join(cwd, 'plugin.ts')) && join(cwd, 'plugin.ts'),
     existsSync(join(cwd, 'plugin.js')) && join(cwd, 'plugin.js'),

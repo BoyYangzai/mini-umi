@@ -3,7 +3,7 @@ import { IApi } from "@mini-umi/core";
 // 插件 
 export default (IApi: IApi) => {
   IApi.registerCommand({
-    name: 'dev',
+    name: 'example-dev',
     fn: () => {
       console.log('devServer run!');
     }
