@@ -30,6 +30,7 @@ jobs:
         run: pnpm install
 
       - name: Monorepo Build Production
+        run: cd packages/umi & npm run build
         run: pnpm run build    
 
       - name: Workflow failed alert
