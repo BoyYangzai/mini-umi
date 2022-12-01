@@ -1,7 +1,8 @@
-import { type IApi } from "@mini-umi/core"
+import { ViteUserConfig } from "../dist"
 import { IWriteTmpFile } from "./writeTmpFile"
 
 
-export type IpresetUmi = IApi & {
-  writeTmpFile: (opts: IWriteTmpFile)=>{}
+export type IpresetUmi = {
+  writeTmpFile: (opts: IWriteTmpFile) => {},
+  modifyViteConfig: (fn: (memo: ViteUserConfig) => ViteUserConfig)=>any
 }

@@ -13,8 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "element-plus": "^2.2.25",
-    "es-module-lexer": "^1.1.0",
-    "esbuild": "^0.15.16",
     "mini-umi": "workspace: *",
     "unplugin-auto-import": "^0.12.0",
     "unplugin-vue-components": "^0.22.11",

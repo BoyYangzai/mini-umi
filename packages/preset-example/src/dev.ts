@@ -14,13 +14,6 @@ export default (IApi: IApi) => {
       console.log(`Hello,${n}`);
     }
   })
-
-  IApi.registerCommand({
-    name: 't',
-    fn: () => {
-      console.log('t run!');
-    }
-  })
   IApi.register({
     key: 'onBuildStart',
     fn: (name) => {

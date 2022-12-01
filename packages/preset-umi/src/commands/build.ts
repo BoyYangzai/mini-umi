@@ -38,10 +38,15 @@ export default (api: IpresetUmi & Core) => {
           routes: routesString
         }
       });
-
-    
+      
+      const userViteConfig = await api.applyPlugins({
+        key: 'modifyViteConfig',
+        initialValue: api.config!.viteConfig
+      })
+      
       // build
       await viteBuild({
+        ...userViteConfig,
         root: resolve(cwd, './.mini-umi'),
         base: './',
         build: {

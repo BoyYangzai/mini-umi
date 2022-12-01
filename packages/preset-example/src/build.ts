@@ -14,19 +14,5 @@ export default (IApi:IApi) => {
       console.log('building!!');
     }
   })
-  IApi.onStart(() => {
-    console.log('onStart 生命周期链式调用中----');
-  })
-
-  IApi.onStart(() => {
-    console.log(`用户配置: ${JSON.stringify(IApi.userConfig)}`);
-  })
-
-  IApi.modifyConfig((memo) => {
-    return {name:'洋-modify'}
-  })
-
-  IApi.modifyConfig((memo) => {
-    return { name: '洋-last' }
-  })
+ 
 }

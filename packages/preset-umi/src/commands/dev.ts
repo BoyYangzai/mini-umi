@@ -1,20 +1,24 @@
-import { Core } from '@mini-umi/core'
 import {
   winPath,
   chalk,
-  chokidar
+  chokidar,
+  lodash
 } from '@umijs/utils';
-import { IpresetUmi } from '../types';
 import { createServer} from 'vite'
 import { join } from 'path'
 import { getRoutesString } from './utils';
 import { getRoutes } from './getRoutes';
+import vue from '@vitejs/plugin-vue';
+import { type IApi } from 'mini-umi';
 
-export default (api: IpresetUmi & Core) => {
+export default (api: IApi) => {
+  
   const cwd = process.cwd()
   api.registerCommand({
     name: 'dev',
     async fn() {
+     
+      
       // directCopyFiles
       const directCopyFiles = ['app.vue', 'main.ts', 'index.html']
       directCopyFiles.forEach(fileName => {
@@ -37,11 +41,20 @@ export default (api: IpresetUmi & Core) => {
         }
       });
       
-      const server =await createServer({
-        configFile: join(__dirname, '../../src/vite.config.ts'),
+
+      // start server
+      const userViteConfig = await api.applyPlugins({
+        key: 'modifyViteConfig',
+        initialValue: api.config!.viteConfig
+      })
+      userViteConfig.plugins.push(vue())
+      const viteConfig = lodash.merge({},  userViteConfig)
+      
+      const server = await createServer({
+        ...viteConfig,
         root: join(process.cwd(), './.mini-umi'),
         server: {
-          port: 8001,
+          port: 8000,
           host: true
         }
       })

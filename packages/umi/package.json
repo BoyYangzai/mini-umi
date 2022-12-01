@@ -1,8 +1,9 @@
 {
   "name": "mini-umi",
-  "version": "1.2.0",
+  "version": "1.2.5",
   "description": "",
-  "main": "dist/cli.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "mumi": "bin/mini-umi.js"
   },
