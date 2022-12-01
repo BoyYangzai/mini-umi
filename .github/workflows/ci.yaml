@@ -30,7 +30,7 @@ jobs:
         run: pnpm install
         
       - name: Build bin first
-        run: cd packages/umi & npm run build
+        run: npm run buildBinFirst
 
       - name: Monorepo Build Production
         run: pnpm run build    
