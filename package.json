@@ -12,7 +12,8 @@
     "build": "pnpm run -r build",
     "publish:all": "pnpm run -r publish:all",
     "build:deps": "father prebundle",
-    "prepublishOnly": "father doctor && npm run build"
+    "prepublishOnly": "father doctor && npm run build",
+    "buildBinFirst": " cd packages/umi && npm run build"
   },
   "keywords": [],
   "authors": [
