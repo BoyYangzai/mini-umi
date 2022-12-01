@@ -28,9 +28,11 @@ jobs:
 
       - name: Install dependencies 
         run: pnpm install
+        
+      - name: Build bin first
+        run: cd packages/umi & npm run build
 
       - name: Monorepo Build Production
-        run: cd packages/umi & npm run build
         run: pnpm run build    
 
       - name: Workflow failed alert
