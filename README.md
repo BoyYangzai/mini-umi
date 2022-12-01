@@ -16,7 +16,7 @@ npm run dev
 
 ✅ 实现编译时 Hook
 
-✅ feat: 读取用户 Loacl Plugin
+✅ feat: 读取用户 Local Plugin
 
 ✅ 完善插件API
 
