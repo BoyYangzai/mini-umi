@@ -94,7 +94,11 @@ export class Config {
   }
 
   static getUserConfig(opts: { configFiles: string[] }) {
-    let config = {};
+    let config = {
+      viteConfig: {
+        
+      }
+    };
     let files: string[] = [];
     
     for (const configFile of opts.configFiles) {

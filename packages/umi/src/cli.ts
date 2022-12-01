@@ -13,6 +13,7 @@ const core = new Core({
     existsSync(join(cwd, 'plugin.ts')) && join(cwd, 'plugin.ts'),
     existsSync(join(cwd, 'plugin.js')) && join(cwd, 'plugin.js'),
   ].filter(Boolean),
+  defaultConfigFiles:['mumirc.ts','mumirc.js']
 })
 
 const args = yParse(process.argv.slice(2))

@@ -1,14 +1,16 @@
 import { Command } from "./command";
 import { Hook } from "./hook";
-import { type Core } from './core'
-import { Config } from "./config/config";
+import { ApplyPluginsType, type Core } from './core'
+import { UserConfig } from "mini-umi";
 
 
 export class PluginAPi{
   service;
   plugin;
   onStart: Function =()=>{};
-  modifyConfig: (memo: Config) => Config|undefined = (memo: Config)=> undefined;
+  modifyConfig: ((
+    fn: (memo: UserConfig) => UserConfig
+  )=> UserConfig|undefined) = fn=> undefined;
   constructor(opts: { service; plugin}) {
     this.service = opts.service;
     this.plugin = opts.plugin

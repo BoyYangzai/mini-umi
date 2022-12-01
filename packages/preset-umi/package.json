@@ -1,6 +1,6 @@
 {
   "name": "@mini-umi/preset-umi",
-  "version": "1.2.1",
+  "version": "1.2.5",
   "description": "",
   "module": "nodenext",
   "main": "dist/index.js",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@mini-umi/core": "workspace:*",
+    "mini-umi": "workspace:*",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@umijs/utils": "^4.0.3",
     "@vitejs/plugin-vue": "^3.2.0",

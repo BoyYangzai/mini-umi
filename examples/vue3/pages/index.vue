@@ -1,22 +1,27 @@
 <template>
   <div class="content">
      <div class="titles">
-      <div class="title" :style="{flexWrap:'nowrap',marginTop:'-20px'}">
+        <a class="title" :style="{display:'block',marginBottom:'10px',color:'red'}" 
+        href="https://github.com/BoyYangzai/mini-umi#readme"
+        >约定式路由+可插拔插件系统+mumirc.ts/js配置文件+Vite毫秒级开发体验
+      </a>
+
+      <div class="title" :style="{flexWrap:'nowrap',marginBottom:'20px'}">
         <a href="/page-a">点我跳转 page-a 路由</a>
         <br/>
         <a href="/test/testpage">点我跳转 test/test-page 路由</a>
       </div>
       <div class="title">
-      <img src="../assets/mini-umi.jpg" alt="" @click="go">
+      <img src="@/assets/mini-umi.jpg" alt="" @click="go">
       </div>
       <div class="title">
         <a href="https://github.com/BoyYangzai/mini-umi" target="_blank" id="a">mini-umi</a>
       </div>
     <div class="title">基于Umi微内核架构搭建的 可插拔 渐进式框架 </div>
-    <div>本框架采用 mini-umi + preset-Vue3.2 + Vite</div>
+    <div  class="title">本框架采用 mini-umi + preset-Vue3.2 + Vite</div>
   </div>
     <div class="titles">
-      <div class="title">To be continued...</div>
+      <el-button type="primary" class="title" @click="message">To be continued...</el-button>
       <div class="title">mini-umi + preset-React + preset-MFSU</div>
       <div class="title">mini-umi + preset-qinkun</div>
       <div class="title">father dumi</div>
@@ -25,8 +30,14 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ElMessage } from 'element-plus'
 const go = () => {
   window.open('https://github.com/BoyYangzai/mini-umi')
+}
+const message = () => {
+  ElMessage.success({
+    message: 'mini-umi 微内核架构'
+  })
 }
 </script>
 
