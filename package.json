@@ -9,11 +9,11 @@
   },
   "scripts": {
     "dev": "father dev",
-    "build": "pnpm run -r build",
+    "build": "pnpm run --filter '*umi*' build && npm run buildExample",
     "publish:all": "pnpm run -r publish:all",
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build",
-    "buildBinFirst": " cd packages/umi && npm run build"
+    "buildExample": " cd examples/vue3 && npm run build"
   },
   "keywords": [],
   "authors": [
