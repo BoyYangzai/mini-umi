@@ -1,6 +1,6 @@
 {
   "name": "@mini-umi/preset-umi",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "module": "nodenext",
   "main": "dist/index.js",

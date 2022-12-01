@@ -1,7 +1,8 @@
 import { Core } from '@mini-umi/core'
 import {
   winPath,
-  chalk
+  chalk,
+  chokidar
 } from '@umijs/utils';
 import { IpresetUmi } from '../types';
 import { createServer} from 'vite'
@@ -48,7 +49,6 @@ export default (api: IpresetUmi & Core) => {
       await server.listen()
       server.printUrls()
 
-
       console.log();
       console.log();
       console.log(
@@ -57,6 +57,22 @@ export default (api: IpresetUmi & Core) => {
       console.log();
       console.log();
       console.log();
+
+
+      // 约定式路由重新生成
+      chokidar.watch(join(cwd, './pages'), {
+        ignoreInitial: true,
+      }).on('all', async () => {
+        const routes = getRoutes()
+        const routesString = getRoutesString(routes)
+        await api.writeTmpFile({
+          target: winPath(join(cwd, `./.mini-umi/routes.ts`)),
+          path: `./routes.ts.tpl`,
+          data: {
+            routes: routesString
+          }
+        });
+      })
 
     }
   })
