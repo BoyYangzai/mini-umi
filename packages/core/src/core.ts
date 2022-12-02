@@ -6,8 +6,7 @@ import {
   AsyncSeriesWaterfallHook,
 } from '@umijs/bundler-utils/compiled/tapable';
 import { Config, Env } from "./config/config";
-import { UserConfig } from "mini-umi";
-
+import { UserConfig } from "./types";
 
 export enum ApplyPluginsType {
   add = 'add',

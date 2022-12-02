@@ -1,6 +1,6 @@
 {
   "name": "@mini-umi/core",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,8 +12,7 @@
   },
   "dependencies": {
       "@umijs/bundler-utils": "^4.0.3",
-      "@umijs/utils": "^4.0.3",
-      "mini-umi": "workspace:*"
+      "@umijs/utils": "^4.0.3"
   },
   "publishConfig": {
     "access": "public"

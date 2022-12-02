@@ -1,5 +1,5 @@
 import { type ViteUserConfig } from "@mini-umi/preset-umi";
-import {type IApi } from "@mini-umi/core";
+import { type ICoreApi } from "@mini-umi/core";
 import { IpresetUmi } from "@mini-umi/preset-umi";
 export type UserConfig = {
   routesPageDir?: string
@@ -7,4 +7,8 @@ export type UserConfig = {
 }
 
 
-export type IApi = IApi & IpresetUmi
+export type IApi = ICoreApi & IpresetUmi & {
+  modifyConfig: ((
+    fn: (memo: UserConfig) => UserConfig
+  ) => UserConfig | undefined) 
+}

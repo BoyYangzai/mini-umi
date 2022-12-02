@@ -1,4 +1,4 @@
-import { Core } from '@mini-umi/core'
+import { type ICoreApi } from '@mini-umi/core'
 import {
   chalk,
   winPath,
@@ -12,7 +12,7 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import { getRoutesString } from './utils';
 import { getRoutes } from './getRoutes';
 
-export default (api: IpresetUmi & Core) => {
+export default (api: ICoreApi & IpresetUmi) => {
   const cwd = process.cwd()
   api.registerCommand({
     name: 'build',

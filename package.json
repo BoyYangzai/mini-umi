@@ -5,11 +5,10 @@
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "bin": {
-    "service-core":"./bin/service.js"
+    "service-core": "./bin/service.js"
   },
   "scripts": {
-    "dev": "father dev",
-    "build": "pnpm run --filter '*umi*' build && npm run buildExample",
+    "build": "turbo run build ",
     "publish:all": "pnpm run -r publish:all",
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build",
@@ -28,6 +27,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "father": "^4.0.7"
+    "father": "^4.0.7",
+    "turbo": "^1.6.3"
   }
 }

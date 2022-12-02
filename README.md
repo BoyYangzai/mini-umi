@@ -1,6 +1,7 @@
 ### 微内核架构：
 使用插件扩展你可以想象到的一切
 
+> ✅ Monorepo 最佳实践 + Turbo 远端构建缓存
 ## 体验 mini-umi + Vue3.2 + Vite预设
 ```
 npx create-mumi 项目名

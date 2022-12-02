@@ -29,6 +29,13 @@ export default (api: IApi) => {
   })
 
   /**
+   * modify 类 hook 务必有返回值，作为下一个 hook 的参数
+   */
+  api.modifyConfig(memo => {
+    // memo.viteConfig.xxx == xxx
+    return memo
+  })
+  /**
    * 修改配置文件中的 viteConfig
    * 亦或者直接使用 api.modifyConfig 修改全部配置
    */
@@ -38,5 +45,4 @@ export default (api: IApi) => {
     }
     return memo
   })
-  
 }
