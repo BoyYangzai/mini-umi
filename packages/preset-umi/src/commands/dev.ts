@@ -9,9 +9,10 @@ import { join } from 'path'
 import { getRoutesString } from './utils';
 import { getRoutes } from './getRoutes';
 import vue from '@vitejs/plugin-vue';
-import { type IApi } from 'mini-umi';
+import { type ICoreApi } from '@mini-umi/core'
+import { IpresetUmi } from '../types';
 
-export default (api: IApi) => {
+export default (api: ICoreApi & IpresetUmi) => {
   
   const cwd = process.cwd()
   api.registerCommand({

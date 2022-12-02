@@ -1,8 +1,8 @@
-import { Core } from '@mini-umi/core'
+import { type ICoreApi } from '@mini-umi/core'
 import { IpresetUmi } from '../types';
 import { createServer } from 'vite'
 import { join } from 'path'
-export default (api: IpresetUmi & Core) => {
+export default (api: IpresetUmi & ICoreApi) => {
   const cwd = process.cwd()
   api.registerCommand({
     name: 'preview',

@@ -2,7 +2,7 @@
   <div class="content">
      <div class="titles">
         <a class="title" :style="{display:'block',marginBottom:'10px',color:'red'}" 
-        href="https://github.com/BoyYangzai/mini-umi#readme"
+        href="https://github.com/BoyYangzai/mini-umi#readme" target="_blank"
         >约定式路由+可插拔插件系统+mumirc.ts/js配置文件+Vite毫秒级开发体验
       </a>
 

@@ -1,6 +1,6 @@
 {
   "name": "@mini-umi/preset-example",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,7 +11,6 @@
     "prepublishOnly": "father doctor && npm run build"
   },
   "dependencies": {
-    "@mini-umi/core":"workspace:*"
   },
   "publishConfig": {
     "access": "public"
