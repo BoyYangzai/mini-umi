@@ -1,4 +1,5 @@
-export function getRoutesString(routes){
+
+export function getRoutesString(routes) {
   let str = '[\n'
   function dps(routes) {
     let t = ''
@@ -26,3 +27,5 @@ export function getRoutesString(routes){
 
   return str
 }
+
+

@@ -2,7 +2,7 @@ import {
   winPath,
   chalk,
   chokidar,
-  lodash
+  deepmerge
 } from '@umijs/utils';
 import { createServer} from 'vite'
 import { join } from 'path'
@@ -18,7 +18,6 @@ export default (api: ICoreApi & IpresetUmi) => {
   api.registerCommand({
     name: 'dev',
     async fn() {
-     
       
       // directCopyFiles
       const directCopyFiles = ['app.vue', 'main.ts', 'index.html']
@@ -32,24 +31,35 @@ export default (api: ICoreApi & IpresetUmi) => {
       });
 
       // routes.ts
-      const routes = getRoutes()
-      const routesString = getRoutesString(routes)
-      await api.writeTmpFile({
-        target: winPath(join(cwd, `./.mini-umi/routes.ts`)),
-        path: `./routes.ts.tpl`,
-        data: {
-          routes: routesString
-        }
-      });
-      
-
+      async function resolveRoutes() {
+        const routesDirPath = await api.applyPlugins({
+          key: 'modifyRoutesDir',
+          initialValue: api.userConfig!.routesDir
+        })
+        const userRoutes = api.userConfig.routes ? api.userConfig.routes:[]
+        const routes = deepmerge(getRoutes({
+          dirPath: routesDirPath
+        }), userRoutes)
+        const routesString = getRoutesString(routes)
+        await api.writeTmpFile({
+          target: winPath(join(cwd, `./.mini-umi/routes.ts`)),
+          path: `./routes.ts.tpl`,
+          data: {
+            routes: routesString
+          }
+        });
+     }
+      await resolveRoutes()
       // start server
       const userViteConfig = await api.applyPlugins({
         key: 'modifyViteConfig',
         initialValue: api.config!.viteConfig
       })
-      userViteConfig.plugins.push(vue())
-      const viteConfig = lodash.merge({},  userViteConfig)
+      const defaultViteConfig = {
+        plugins: [vue()]
+      }
+      // userViteConfig.plugins.push()
+      const viteConfig = deepmerge(userViteConfig,defaultViteConfig)
       
       const server = await createServer({
         ...viteConfig,
@@ -77,17 +87,8 @@ export default (api: ICoreApi & IpresetUmi) => {
       chokidar.watch(join(cwd, './pages'), {
         ignoreInitial: true,
       }).on('all', async () => {
-        const routes = getRoutes()
-        const routesString = getRoutesString(routes)
-        await api.writeTmpFile({
-          target: winPath(join(cwd, `./.mini-umi/routes.ts`)),
-          path: `./routes.ts.tpl`,
-          data: {
-            routes: routesString
-          }
-        });
+        await resolveRoutes()
       })
-
     }
   })
 }

@@ -74,7 +74,7 @@ export class Core {
         },
           async (memo: any) => {
             const items = await hook.fn(memo, opts.args);
-            return Array.isArray(memo) ? [...memo, ...items] : { ...memo, ...items };
+            return typeof memo !== 'object' ? items : Array.isArray(memo) ? [...memo, ...items] : { ...memo, ...items };
           },
         )
       }

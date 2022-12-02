@@ -31,8 +31,8 @@ export default (api: IApi) => {
   /**
    * modify 类 hook 务必有返回值，作为下一个 hook 的参数
    */
-  api.modifyConfig(memo => {
-    // memo.viteConfig.xxx == xxx
+  api.modifyRoutesDir(memo => {
+    memo = './pages'
     return memo
   })
   /**

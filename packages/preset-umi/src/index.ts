@@ -1,5 +1,6 @@
 export { type UserConfig as ViteUserConfig } from 'vite'
 export { IpresetUmi } from './types'
+
 export default () => {
   return {
     plugins: [

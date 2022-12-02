@@ -1,7 +1,7 @@
 {
   "name": "mini-umi",
-  "version": "1.2.6",
-  "description": "",
+  "version": "1.2.7",
+  "description": "a simple model for Umi and Vue3.2 + Vite",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
