@@ -7,6 +7,9 @@
       </a>
 
       <div class="title" :style="{flexWrap:'nowrap',marginBottom:'20px'}">
+        已完成：客户端渲染、服务端渲染 通过指令切换 TODO： SSG(暂时有点小bug)
+      </div>
+      <div class="title" :style="{flexWrap:'nowrap',marginBottom:'20px'}">
         <a href="/page-a">点我跳转 page-a 路由</a>
         <br/>
         <a href="/test/testpage">点我跳转 test/test-page 路由</a>
@@ -30,7 +33,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ElMessage } from 'element-plus'
+import { ElMessage,ElButton } from 'element-plus'
 const go = () => {
   window.open('https://github.com/BoyYangzai/mini-umi')
 }

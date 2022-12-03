@@ -71,6 +71,6 @@ export function getRoutes(opts: { dirPath: string } = { dirPath: './pages' }) {
   function getName(fileName) {
     return fileName.replace('.vue','').replace('.tsx','')
   }
-
+  
   return routes
 }

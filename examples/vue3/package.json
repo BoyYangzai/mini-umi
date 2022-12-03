@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "mumi dev",
+    "ssr": "mumi ssr",
     "build": "mumi build",
     "preview": "mumi preview"
   },
@@ -16,6 +17,7 @@
     "es-module-lexer": "^1.1.0",
     "esbuild": "^0.15.16",
     "mini-umi": "workspace: *",
+    "pinia": "^2.0.27",
     "unplugin-auto-import": "^0.12.0",
     "unplugin-vue-components": "^0.22.11",
     "vue": "^3.2.45",
