@@ -24,7 +24,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {RouterView} from 'vue-router'
+
 const go = () => {
   window.open('https://github.com/BoyYangzai/mini-umi')
 }

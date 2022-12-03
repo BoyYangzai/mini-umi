@@ -8,7 +8,10 @@ export default () => {
       require.resolve('./writeTmpFile'),
       require.resolve('./commands/dev'),
       require.resolve('./commands/build'),
-      require.resolve('./commands/preview')
+      require.resolve('./commands/preview'),
+      require.resolve('./commands/ssr'),
+      require.resolve('./commands/ssg'),
+      require.resolve('./commands/ssg-preview')
     ]
   }
 }
