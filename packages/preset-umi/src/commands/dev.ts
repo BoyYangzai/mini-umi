@@ -2,7 +2,8 @@ import {
   winPath,
   chalk,
   chokidar,
-  deepmerge
+  deepmerge,
+  fsExtra
 } from '@umijs/utils';
 import { createServer} from 'vite'
 import { join } from 'path'
@@ -50,6 +51,18 @@ export default (api: ICoreApi & IpresetUmi) => {
         });
      }
       await resolveRoutes()
+
+
+      // layout/index.vue
+      function layout() {
+        try {
+          const layoutContent = fsExtra.readFileSync(winPath(join(cwd, './layout/index.vue')), 'utf-8')
+          fsExtra.writeFileSync(winPath(join(cwd, './.mini-umi/App.vue')), layoutContent)
+        } catch (err) {
+          // no file          
+        }    
+      }
+      layout()
       // start server
       const userViteConfig = await api.applyPlugins({
         key: 'modifyViteConfig',
@@ -89,6 +102,15 @@ export default (api: ICoreApi & IpresetUmi) => {
       }).on('all', async () => {
         await resolveRoutes()
       })
+
+      // layout 重新生成
+      chokidar.watch(join(cwd, './layout'), {
+        ignoreInitial: true,
+      }).on('all', async () => {
+        layout()
+       await server.restart()
+      })
+
     }
   })
 }

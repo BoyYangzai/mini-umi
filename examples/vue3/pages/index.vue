@@ -5,7 +5,6 @@
         href="https://github.com/BoyYangzai/mini-umi#readme" target="_blank"
         >约定式路由+可插拔插件系统+mumirc.ts/js配置文件+Vite毫秒级开发体验
       </a>
-
       <div class="title" :style="{flexWrap:'nowrap',marginBottom:'20px'}">
         已完成：客户端渲染、服务端渲染 通过指令切换 TODO： SSG(暂时有点小bug)
       </div>
