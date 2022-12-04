@@ -37,6 +37,9 @@ npm run ssr // 服务端渲染模式
 ✅ 支持用户配置文件自定义路由 和 更改约定式路由所在目录
 
 ✅ 可通过 npm run ssr 开启服务端渲染模式
+
+✅ CSR SSR 支持用户自定义Layout
+
 🤔TODO：
 - [ ] 实现自定义 Layout 以及 addLayout api
 ...
