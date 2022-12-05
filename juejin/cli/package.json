@@ -1,0 +1,22 @@
+{
+  "name": "yang-first-pkg",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "bin": {
+    "yang": "./bin/yang.js"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc --target es5"
+  },
+  "files": [
+    "bin"
+  ],
+  "keywords": [],
+  "author": "洋",
+  "license": "ISC",
+  "dependencies": {
+    "yang-first-pkg": "^1.0.1"
+  }
+}
