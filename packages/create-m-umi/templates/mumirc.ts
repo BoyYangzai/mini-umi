@@ -7,7 +7,7 @@ export default defineMumiConfig({
   routes: [{
     path: '/localUserRoute',
     name: 'localUserRoute',
-    component: () => import('./localUserRoute.vue'),
+    component: () => import('../localUserRoute.vue'),
   }],
   // 约定式路由存放目录 如有需求可更改为 docs 或其他
   // 这里生效的是 pages 目录，在插件里被拦截更改了
@@ -20,7 +20,9 @@ export default defineMumiConfig({
       //   resolvers: [ElementPlusResolver()]
       // }),
       Components({
-        resolvers: [ElementPlusResolver()]
+        resolvers: [ElementPlusResolver({
+          ssr: true
+        })]
       })
     ],
     resolve: {
