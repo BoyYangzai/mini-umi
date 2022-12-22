@@ -7,7 +7,7 @@
 1.  定制框架，教你搭建企业级可插拔定制框架。
 
 ### 作者介绍
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前百度、现蚂蚁体验技术部 AntV 开源团队实习生，牛客千粉博主，喜欢探索前端工程化解决方案，热爱开源，喜欢分享技术，同时 **AntV** 的**Member**，**Umi、Dumi、AntDesign** 的**Contributer**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前百度、现蚂蚁体验技术部 AntV 开源团队实习生，牛客千粉博主，喜欢探索前端工程化解决方案，热爱开源，喜欢分享技术，同时也是 **AntV** 和 **Umi** 团队的 **Member**，
 ### 适宜人群：
 
 在校大学生 ，初、中级前端工程师
