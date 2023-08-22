@@ -15,14 +15,12 @@ export default defineMumiConfig({
   // 请移步 Vite配置: https://vitejs.dev/config/
   viteConfig: {
     plugins: [
-      // TODO： Autoimport 在 CSR没问题 在SSR会丢失CSS
-      // AutoImport({
-      //   resolvers: [ElementPlusResolver()]
-      // }),
+      // Tip: SSR 模式请手动注释 并加上 EP 的 CSS 文件
+      AutoImport({
+        resolvers: [ElementPlusResolver()]
+      }),
       Components({
-        resolvers: [ElementPlusResolver({
-          ssr: true
-        })]
+        resolvers: [ElementPlusResolver()]
       })
     ],
     resolve: {
