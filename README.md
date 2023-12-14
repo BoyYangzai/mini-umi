@@ -94,6 +94,7 @@ npm run ssr // 服务端渲染模式
 🤔More:
 - [ ] 实现一套 preset-react
 - [ ] 实现一套 preset-qiankun
-- [ ] 实现 father
-- [ ] 实现 dumi
+- [ ] 实现 Father
+- [ ] 实现 Dumi
+- [x] 实现一个新的应用型前端框架 - [Doctor](https://github.com/FE-Struggler/doctor)
 
